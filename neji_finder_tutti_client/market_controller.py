@@ -21,6 +21,10 @@ class TuttiMarketController:
         '''
         await self._duct.open(wsd_url)
 
+    async def close(self):
+        '''Tutti.marketサーバーとの接続を切断します。'''
+        await self._duct.close()
+
     async def register_job(
         self,
         job_class_id: str,

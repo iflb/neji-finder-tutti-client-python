@@ -1,7 +1,7 @@
 import sys
 import asyncio
 
-from neji_finder_tutti_client.main import NejiFinderTuttiClient
+from neji_finder_tutti_client import NejiFinderTuttiClient
 
 async def on_response(data):
     print('Data received! (watch_id: {})'.format(data['last_watch_id']))
