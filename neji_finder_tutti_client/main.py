@@ -170,13 +170,13 @@ class NejiFinderTuttiClient:
     async def publish_tasks_to_market(
         self,
         automation_parameter_set_id: str,
-        some_param
+        sync_id: str,
     ) -> Tuple[str, str]:
         '''タスクをTutti.marketのJobとして発行します。
 
         Args:
             automation_parameter_set_id: Tutti.worksにおいて発行されるAutomation Parameter Set ID (Automation ID)。
-            some_param: 未定パラメータ
+            sync_id: クライアントとの同期用ID
 
         Returns:
             tuple: 生成されたリソースのIDを返します。0番目はTutti.worksのNanotask Group ID、1番目はTutti.marketのJob IDです。
@@ -213,11 +213,9 @@ class NejiFinderTuttiClient:
         time = int(time.time())
 
         nanotask = {
-            #'id': f'{student_id}-{video_id}-{time}',
             'id': f'{time}',
             'props': {
-                #'student_id': student_id,
-                #'video_id': video_id,
+                'sync_id': sync_id,
             }
         }
 

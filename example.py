@@ -27,14 +27,14 @@ async def main():
 
         if mode == 'publish':
             automation_parameter_set_id = sys.argv[2]
-            some_param = 'some dummy parameter'
-            if len(sys.argv) < 3:
+            if len(sys.argv) < 4:
                 print('Usage:  python example.py publish <automation_parameter_set_id>')
                 print('')
             else:
+                sync_id = sys.argv[3]
                 ngid, jid = await client.publish_tasks_to_market(
                         automation_parameter_set_id,
-                        some_param
+                        sync_id
                     )
 
         elif mode == 'watch_response':
@@ -60,7 +60,7 @@ async def main():
 
 if __name__=='__main__':
     if len(sys.argv)==1:
-        print('Usage:  python example.py <mode> <automation_parameter_set_id> [args]')
+        print('Usage:  python example.py <mode> <automation_parameter_set_id> <sync_id>')
         print('Available modes ... "publish", "watch_response"')
         print('')
     else:
